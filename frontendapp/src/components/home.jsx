@@ -1,11 +1,10 @@
-import * as React from 'react';
-import {Button, Card, Navbar, CardGroup} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Home = () =>{
     return (
-        <>
-          <Button variant="dark">Hello world</Button>
-        </>
+      <div>
+        <Button variant="primary">Hello World</Button>
+      </div>
       );
     
 };
