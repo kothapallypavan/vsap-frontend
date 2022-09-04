@@ -1,23 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import { Card } from 'react-bootstrap';
-import Button from 'react-bootstrap/esm/Button';
-
+import Home from './components/home';
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
 function App() {
   return (
-    <div>
-       <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home/>}></Route>
+      </Routes>
+    </Router>
   );
 }
 
