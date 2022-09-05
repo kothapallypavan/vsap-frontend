@@ -25,7 +25,7 @@ function Loanform() {
         <Form.Group className="mb-3" controlId="formBasicLoanType">
           <Form.Label>Loan Type</Form.Label>
           <Form.Select aria-label="Default select example">
-            <option>select Loan Type</option>
+            <option>Select Loan Type</option>
             <option value="1">Home Loan</option>
             <option value="2">Personal Loan</option>
             <option value="3">Student Loan</option>
