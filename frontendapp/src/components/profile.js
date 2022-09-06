@@ -1,10 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {Col,Container,Row} from "react-bootstrap";
-function profile() {
+import { useState } from 'react';
+function Profile() {
     const firstname="Sathwika";
     const lastname="Chanduri";
     const email="sathwikachanduri@gmail.com";
+
   return (
     <div>
 
@@ -30,11 +32,11 @@ function profile() {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
       <Form.Label>Old Password :  </Form.Label>
-        <Form.Control type="Old Password" placeholder=" Enter password" />
+        <Form.Control name="oldp" type="Old Password" placeholder=" Enter password" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
       <Form.Label>New Password :  </Form.Label>
-        <Form.Control type="New Password" placeholder=" Enter password" />
+        <Form.Control name="newp" type="New Password" placeholder=" Enter password" />
       </Form.Group>
       
       <Button variant="primary" type="Update">
@@ -48,4 +50,4 @@ function profile() {
   );
 }
 
-export default profile;
+export default Profile;
