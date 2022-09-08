@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Form,Card, Button } from "react-bootstrap";
+import axios from "axios";
 
 const Home = () =>{
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
- 
+    
     const cardcss = {
       height:"540px",
       padding:"70px",
@@ -19,6 +20,22 @@ const Home = () =>{
     }
     const formsubmit = ()=>{
       console.log(email,password);
+      axios.post(
+        "http://localhost:8080/auth/signin",{
+          email:email,
+          password:password
+        }
+      )
+      .then((res) => {
+        if(res.status == 200 || res.data == 201){
+          localStorage.setItem("token",res.data.jwt);
+          localStorage.setItem("user",email);
+          window.alert("Logged in!");
+        }
+        else{
+          window.alert("Bad credentials")
+        }
+      });
     }
     return (
       <div>
