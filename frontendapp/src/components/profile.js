@@ -1,18 +1,39 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {Col,Container,Row} from "react-bootstrap";
+import {Col,Container,Row,Navbar,Nav} from "react-bootstrap";
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function Profile() {
     const firstname="Sathwika";
     const lastname="Chanduri";
     const email="sathwikachanduri@gmail.com";
-
+    const navigate = useNavigate();
+    useEffect(() => {
+      if(!localStorage.getItem("token") || !localStorage.getItem("user")){
+        navigate("/signin");  
+      }
+    },[])
   return (
     <div>
-
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-
-        <h1 className="shadow-sm text-sucess mt-5 p-3 text-center rounded">MY PROFILE</h1>
+        <Navbar.Brand href="#home">Profile</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto"></Nav>
+          <Nav>
+          <Nav.Link href="/dashboard">Home</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link eventKey={2} href="#memes">
+              signout
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+      <Container>
         <Row className="mt-5">
           <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
     <Form>
@@ -27,7 +48,7 @@ function Profile() {
 
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label>Enter Email :  </Form.Label>
+      <Form.Label>Email :  </Form.Label>
         <Form.Label>{email}</Form.Label>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">

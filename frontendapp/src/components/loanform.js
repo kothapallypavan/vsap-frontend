@@ -1,15 +1,41 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {Col,Container,Row} from "react-bootstrap";
-
+import {Col,Container,Row,Navbar,Nav} from "react-bootstrap";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 function Loanform() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!localStorage.getItem("token") || !localStorage.getItem("user")){
+      navigate("/signin");  
+    }
+  },[])
+  const signout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/signin");
+  }
   return (
     <div>
-
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">Loan Form</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto"></Nav>
+          <Nav>
+          <Nav.Link href="/dashboard">Home</Nav.Link>
+            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link eventKey={2} onClick={signout}>
+              signout
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
       <Container>
 
-        <h1 className="shadow-sm text-sucess mt-5 p-3 text-center rounded">LOAN APPLICATION FORM</h1>
-        <Row className="mt-5">
+        <Row className="mt-3">
           <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
       <Form>
         <Form.Group className="mb-3" controlId="formBasicAccountNumber">

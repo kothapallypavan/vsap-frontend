@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Form,Card, Button } from "react-bootstrap";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 const Home = () =>{
+    const navigate = useNavigate();
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     
+    useEffect(() => {
+      if (localStorage.getItem("user")){
+        navigate("/dashboard");  
+      }
+    },[])
+  
     const cardcss = {
       height:"540px",
       padding:"70px",
@@ -30,10 +38,10 @@ const Home = () =>{
         if(res.status == 200 || res.data == 201){
           localStorage.setItem("token",res.data.jwt);
           localStorage.setItem("user",email);
-          window.alert("Logged in!");
+          navigate("/dashboard");
         }
         else{
-          window.alert("Bad credentials")
+          window.alert("Bad credentials");
         }
       });
     }
