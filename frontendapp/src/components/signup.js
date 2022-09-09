@@ -38,8 +38,9 @@ function Signup()
       <FloatingLabel controlId="floatingPassword" label="Confirm Password">
         <Form.Control type="password" placeholder="Confirm Password" required/>
       </FloatingLabel>
-   
-        <Button variant="primary" className="mt-3">Submit</Button>
+        <div style={{textAlign:"center"}}>
+          <Button variant="primary" className="mt-3">Submit</Button>
+        </div>
       </Card.Body>
     </Card>
    
