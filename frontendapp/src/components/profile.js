@@ -10,11 +10,13 @@ function Profile() {
     const lastname="Chanduri";
     const email="sathwikachanduri@gmail.com";
     const navigate = useNavigate();
+    /*
     useEffect(() => {
       if(!localStorage.getItem("token") || !localStorage.getItem("user")){
         navigate("/signin");  
       }
     },[])
+    */
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">

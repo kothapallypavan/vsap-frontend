@@ -7,12 +7,14 @@ import { useEffect } from 'react';
 function Dashboard() {
   const navigate = useNavigate();
   
+  /* 
   useEffect(() => {
     if(!localStorage.getItem("token") || !localStorage.getItem("user")){
       navigate("/signin");  
     }
   },[])
-
+  */
+ 
   const applybutton = (e) =>{
     navigate("/loanform");
   }

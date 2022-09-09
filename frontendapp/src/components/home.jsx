@@ -7,13 +7,13 @@ const Home = () =>{
     const navigate = useNavigate();
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    
+    /*
     useEffect(() => {
       if (localStorage.getItem("user")){
         navigate("/dashboard");  
       }
     },[])
-  
+    */
     const cardcss = {
       height:"540px",
       padding:"70px",

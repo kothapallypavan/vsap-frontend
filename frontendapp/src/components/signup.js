@@ -9,7 +9,7 @@ function Signup()
 {
   
   return (
-       
+
       <Card border="primary" style={{ width: '30rem',marginLeft:"500px",marginTop:"150px"}}>
      
       <Card.Body>

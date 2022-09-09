@@ -4,11 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 function Loanlist(){
     const navigate = useNavigate();
+    /*
     useEffect(() => {
         if(!localStorage.getItem("token") || !localStorage.getItem("user")){
         navigate("/signin");  
         }
     },[])
+    */
     const divcss = {
         padding:"40px 10rem"
     }

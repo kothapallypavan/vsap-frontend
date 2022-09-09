@@ -5,11 +5,13 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 function Loanform() {
   const navigate = useNavigate();
+  /*
   useEffect(() => {
     if(!localStorage.getItem("token") || !localStorage.getItem("user")){
       navigate("/signin");  
     }
   },[])
+  */
   const signout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
