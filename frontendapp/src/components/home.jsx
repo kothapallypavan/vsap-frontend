@@ -15,7 +15,7 @@ const Home = () =>{
     },[])
     */
     const cardcss = {
-      height:"540px",
+      height:"560px",
       padding:"70px",
       width:"500px",
       margin:"80px auto",
@@ -26,8 +26,8 @@ const Home = () =>{
     const passwordchange = (e)=>{
       setPassword(e.target.value);
     }
-    const formsubmit = ()=>{
-      console.log(email,password);
+    const formsubmit = (e)=>{
+      e.preventDefault()
       axios.post(
         "http://localhost:8080/auth/signin",{
           email:email,
@@ -35,20 +35,25 @@ const Home = () =>{
         }
       )
       .then((res) => {
-        if(res.status == 200 || res.data == 201){
+        if(res.status == 200 || res.status == 201){
           localStorage.setItem("token",res.data.jwt);
           localStorage.setItem("user",email);
+          const seconds = 60 * 60 * 1000;
+          const expiry = new Date(new Date().getTime() + seconds);
+          localStorage.setItem("expiry", expiry.toISOString());
           navigate("/dashboard");
+          window.location.reload()
         }
-        else{
-          window.alert("Bad credentials");
-        }
+      })
+      .catch(function(error){
+        document.getElementById("bad").style.display = "block";
       });
     }
     return (
       <div>
         <Card style={cardcss}>
           <Form>
+           <Form.Label id="bad" style={{display:"none",backgroundColor:"rgba(255, 53, 71, 0.5)", border:"2px solid red",padding:"0px 20px"}}>Bad credentials</Form.Label>
             <h1 style={{marginBottom:"30px"}}>Login</h1>
             <Form.Group>
               <Form.Label >Email address </Form.Label>
