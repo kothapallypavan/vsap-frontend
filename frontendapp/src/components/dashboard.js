@@ -21,7 +21,7 @@ function Dashboard() {
   const statusbutton = () => {
     navigate("/loanstatus");
   }
-  const signout = () => {
+  const signoutfunc = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     navigate("/signin");
@@ -37,7 +37,7 @@ function Dashboard() {
           <Nav>
           <Nav.Link href="/dashboard">Home</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
-            <Nav.Link eventKey={2} onClick={signout}>
+            <Nav.Link eventKey={2} onClick={signoutfunc}>
               signout
             </Nav.Link>
           </Nav>

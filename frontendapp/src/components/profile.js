@@ -4,11 +4,11 @@ import {Col,Container,Row,Navbar,Nav} from "react-bootstrap";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 function Profile() {
-    const firstname="Sathwika";
-    const lastname="Chanduri";
-    const email="sathwikachanduri@gmail.com";
+    const firstname=localStorage.getItem("fname");
+    const lastname=localStorage.getItem("lname")
+    const email=localStorage.getItem("user")
     const navigate = useNavigate();
     /*
     useEffect(() => {
@@ -17,6 +17,7 @@ function Profile() {
       }
     },[])
     */
+    
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -40,18 +41,17 @@ function Profile() {
           <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
     <Form>
       <Form.Group className="mb-3" controlId="formbasicFirstName">
-        <Form.Label>FirstName :  </Form.Label>
-        <Form.Label>{firstname}</Form.Label>
+        <Form.Label>FirstName </Form.Label>
+        <Form.Control placeholder={firstname} disabled/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicLastName">
-        <Form.Label>LastName :  </Form.Label>
-        <Form.Label>{lastname}</Form.Label>
-
+        <Form.Label>LastName </Form.Label>
+        <Form.Control placeholder={lastname} disabled/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label>Email :  </Form.Label>
-        <Form.Label>{email}</Form.Label>
+        <Form.Label>Email </Form.Label>
+        <Form.Control placeholder={email} disabled/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
       <Form.Label>Old Password :  </Form.Label>

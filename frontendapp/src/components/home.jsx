@@ -7,6 +7,7 @@ const Home = () =>{
     const navigate = useNavigate();
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+    const[user,setUser] = useState([])
     /*
     useEffect(() => {
       if (localStorage.getItem("user")){
@@ -38,6 +39,8 @@ const Home = () =>{
         if(res.status == 200 || res.status == 201){
           localStorage.setItem("token",res.data.jwt);
           localStorage.setItem("user",email);
+          localStorage.setItem("fname",res.data.user.firstname)
+          localStorage.setItem("lname",res.data.user.lastname)
           const seconds = 60 * 60 * 1000;
           const expiry = new Date(new Date().getTime() + seconds);
           localStorage.setItem("expiry", expiry.toISOString());
